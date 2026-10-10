@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: justify;
+    max-width: 1000px;
+    margin:auto;
+    background-color: black;
+}
+
+main, header, nav, article, section, footer {
+    border: 4px solid white;
+    gap: 4px;
+}
+
+/*nav*/
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 0;
+    list-style-type: none;
+    max-width: 75%;
+}
+nav a {
+    text-decoration: none;
+    color: yellow;
+}
+nav ul li {
+    padding: 8px;
+    background-color: rgb(8, 71, 126);
+}
+nav ul li:hover {
+    background-color: rgb(170, 211, 247);
+}
+nav ul li:hover a {
+    color: rgb(252, 253, 253);
+}
+
+/*main grid*/
+main {
+    display:grid;
+    gap: 8px;
+    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-areas:    " h h h "
+                            " n n n "
+                            " as_left ar as_right "
+                            " f f f ";
+                            /* child elemek elhelyezkedése a rácson */
+}
+
+/* neveket kell a grid areaknak adni */
+header {
+    grid-area:h;
+}
+
+nav {
+    grid-area:n;
+}
+
+aside.aside_left {
+    grid-area:as_left;
+}
+
+aside.aside_right {
+    grid-area:as_right;
+}
+
+
+article {
+    grid-area:ar
+}
+
+footer {
+    grid-area:f
+}
+
+article.index_ver {
+    display:grid;
+    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+section.section_gallery {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: baseline;
+}
+
+img {
+    width: 100%;
+    padding: 2px;
+}
+
+div.img_container {
+    height: 100px;
+    overflow: hidden;
+}
+
+/* reszponzivitás
+Minden megjelenítő eszközön "jól néz ki", kényelmes, illeszkedik a kép szélességéhez, stb.
+Ehhez, töréspontot használunk ahol átrendeződik az oldal */
+
+@media screen and (max-width:800px){
+    nav ul {
+    grid-template-columns: 1fr;
+    }
+
+    main {
+    gap: 4px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:    " h h "
+                            " n n "
+                            " ar ar "
+                            " as_left as_right "
+                            " f f ";
+                            /* child elemek elhelyezkedése a rácson */
+    }
+
+    section.section_gallery {
+    gap: 3px;
+    grid-template-columns: 1fr 1fr;
+    }
+
+    nav ul {
+    max-width: 62.5%;
+    }
+
+}
+
+@media screen and (max-width:600px){
+    main {
+    gap: 2px;
+    grid-template-columns: 1fr;
+    }
+
+    article {
+        grid-template-columns: 1fr;
+    }
+
+    section.section_gallery {
+    gap: 2px;
+    grid-template-columns: 1fr;
+    }
+
+    nav ul {
+    max-width: 50%;
+    }
+
+}
